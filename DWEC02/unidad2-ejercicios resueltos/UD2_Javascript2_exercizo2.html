@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mayor de tres números</title>
+</head>
+
+<body>
+    <script>
+        dato1 = prompt('Introduzca el primer numero: ');
+        dato2 = prompt('Introduzca el segundo numero: ');
+        dato3 = prompt('Introduzca el tercer numero: ');
+
+        document.write('<p>Los números introducidos son: ' + dato1 + ', ' + dato2 + ', ' + dato3 + '</p>');
+        num1 = parseInt(dato1);
+        num2 = parseInt(dato2);
+        num3 = parseInt(dato3);
+        if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+            document.write('<p>Alguno de los números no es válido</p>');
+        } else {
+            var mayor;
+            if (num1 > num2 && num1 > num3) {
+                mayor = num1;
+            } else if (num2 > num1 && num2 > num3) {
+                mayor = num2
+            } else if (num3 > num1 && num3 > num2) {
+                mayor = num3
+            }
+            document.write('<p>El mayor es: ' + mayor + '</p>');
+        }
+    </script>
+</body>
+
+</html>

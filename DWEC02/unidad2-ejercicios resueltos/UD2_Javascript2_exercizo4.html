@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mayor y menor de tres números</title>
+</head>
+
+<body>
+    <script src="lib_maymin.js"></script>
+    <script>
+        dato1 = prompt('Introduzca el primer numero: ');
+        dato2 = prompt('Introduzca el segundo numero: ');
+        dato3 = prompt('Introduzca el tercer numero: ');
+
+        document.write('<p>Los números introducidos son: ' + dato1 + ', ' + dato2 + ', ' + dato3 + '</p>');
+        num1 = parseInt(dato1);
+        num2 = parseInt(dato2);
+        num3 = parseInt(dato3);
+        if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+            document.write('<p>Alguno de los números no es válido</p>');
+        } else {
+            document.write('<button onclick="mayor(num1, num2, num3);">Calcular mayor</button>');        
+            document.write('<button onclick="menor(num1, num2, num3);">Calcular menor</button>');        
+        }
+    </script>
+</body>
+
+</html>

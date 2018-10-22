@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tablas</title>
+</head>
+
+<body>
+    <script>
+        num1 = parseInt(prompt('Introduzca el primer numero: '));
+        num2 = parseInt(prompt('Introduzca el segundo numero: '));
+        num3 = parseInt(prompt('Introduzca el tercer numero: '));
+        document.write("<table><tr>");
+        document.write('<td width=\"33%\">TABLA DE MULTIPLICAR DEL ' +  num1 +  '<br />');
+        for (var i = 1; i <= 10; i++) {
+            document.write(num1 + " x " + i + " = " + num1 * i + "<br />");
+        }
+        document.write('</td>');
+        document.write('<td width=\"33%\">TABLA DE SUMAR DEL ' +  num2 +  '<br />');
+        for (var i = 1; i <= 10; i++) {
+            document.write(num2 + " x " + i + " = " + num2 + i + "<br />");
+        }
+        document.write('</td>');
+        document.write('<td width=\"33%\">TABLA DE DIVIDIR DEL ' +  num3 +  '<br />');
+        for (var i = 1; i <= 10; i++) {
+            document.write(num3 + " x " + i + " = " + num3 / i + "<br />");
+        }
+        document.write('</td>');
+    </script>
+</body>
+
+</html>

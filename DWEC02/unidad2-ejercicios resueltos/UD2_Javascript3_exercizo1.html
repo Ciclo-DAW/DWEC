@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <table class="tabla">
+        <tr class="fila">
+            <td>Operando 1</td>
+            <td><input id="op1" type="text"></td>
+        </tr>
+        <tr class="fila">
+            <td>Operando 2</td>
+            <td><input id="op2" type="text"></td>
+        </tr>
+        <tr class="fila-operandos">
+            <td colspan="2">
+                <button value="+" onclick="calc(value)">+</button>
+                <button value="-" onclick="calc(value)">-</button>
+                <button value="*" onclick="calc(value)">*</button>
+                <button value="/" onclick="calc(value)">/</button>
+                <button value="%" onclick="calc(value)">%</button>
+                <button value="C" onclick="calc(value)">C</button>
+            </td>
+        </tr>
+        <tr class="fila">
+            <td>Resultado</td>
+            <td><input id="resultado" type="text"></td>
+        </tr>
+        <tr id="error"></tr>
+    </table>
+
+    <script>
+        function calc(value) {
+            var operation = value;
+            var n1 = document.getElementById('op1');
+            var n2 = document.getElementById('op2');
+            var val1 = parseInt(op1.value);
+            var val2 = parseInt(op2.value);
+            var resultado = document.getElementById('resultado');
+            var error = document.getElementById('error');
+
+            if (isNaN(val1) || isNaN(val2)) {
+                resultado.value = 'Error';
+                error.innerHTML = 'Operando no válido';
+            } else {
+                error.innerHTML = '';
+                switch (operation) {
+                    case '+':
+                        resultado.value = val1 + val2;
+                        break;
+                    case '-':
+                        resultado.value = val1 - val2;
+                        break;
+                    case '*':
+                        resultado.value = val1 * val2;
+                        break;
+                    case '/':
+                        resultado.value = val1 / val2;
+                        break;
+                    case '%':
+                        resultado.value = val1 % val2;
+                        break;
+                    case 'C':
+                        resultado.value = '';
+                        n1.value = '';
+                        n2.value = '';
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
