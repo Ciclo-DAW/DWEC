@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DNI Valido</title>
+</head>
+
+<body>
+    DNI:
+    <input id="dni" type="text">
+    <button onclick="dniCalc()">Calcular validez</button>
+    <script>
+        function dniCalc() {
+            var letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            var dni = document.getElementById('dni').value;
+            var dniNumber = parseInt(dni.substr(0, dni.length - 1));
+            if (letras[dniNumber % 23] === dni[dni.length-1].toUpperCase()) {
+                alert('Correcto');
+            } else {
+                alert('Incorrecto');
+            }
+        }
+    </script>
+</body>
+
+</html>
