@@ -79,11 +79,11 @@
 
       var nacimiento = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"][
         new Date(anho, mes-1, dia).getDay()
-      ];
+      ]; //Supuse que sería el dia de la semana así que lo obtengo según la posición en el array que me proporciona getDay
       document.writeln("Naciste un feliz " + nacimiento + " de " + anho + "<br>");
       document.writeln("El coseno de 180 es: " + Math.cos(180) + "<br>");
       document.writeln("El número mayor de (34,67,23,75,35,19) es: " + Math.max(34,67,23,75,35,19) + "<br>");
-      document.writeln("Ejemplo de número al azar: " + Math.floor(Math.random()*(1000 - 1 + 1) + 1) + "<br>");
+      document.writeln("Ejemplo de número al azar: " + Math.floor(Math.random()*(1000 - 1 + 1) + 1) + "<br>"); //El número aleatorio lo hice entre 1 y 1000 ya que no se indicaba ningún intervalo
     </script>
   </body>
 </html>
