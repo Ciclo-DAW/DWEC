@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DWEC03</title>
+  </head>
+  <body>
+    <script>
+      var subVentana = window.open(
+        "",
+        "nueva",
+        "resizable=0, width=700, height=500"
+      );
+      var funcionTarea = function() {
+        subVentana.document.open();
+        subVentana.document.write("<h3>Ejemplo de Ventana Nueva</h3>");
+        subVentana.document.writeln(
+          "URL completa: " + subVentana.location.href + "<br>"
+        );
+        subVentana.document.writeln(
+          "Protocolo utilizado: " + subVentana.location.protocol + "<br>"
+        );
+        subVentana.document.writeln(
+          "Nombre en código del navegador: " +
+            subVentana.navigator.appCodeName +
+            "<br>"
+        );
+        if (subVentana.navigator.javaEnabled) {
+          subVentana.document.writeln("Java SI disponible en esta ventana<br>");
+        } else {
+          subVentana.document.writeln("Java NO disponible en esta ventana<br>");
+        }
+        subVentana.document.writeln(
+          '<iframe src="https://www.google.es" width="800" height="600"></iframe>'
+        );
+      };
+
+      funcionTarea();
+      document.write("<h1>TAREA DWEC03</H2><HR />");
+      var nombre = prompt("Introduzca su nombre y apellidos.");
+      var dia = prompt("Introduzca su DIA de nacimiento.");
+      var mes = prompt("Introduzca su MES de nacimiento.");
+      var anho = prompt("Introduzca su AÑO de nacimieno.");
+      document.writeln("Buenos días " + nombre + "<br>");
+      document.writeln(
+        "Tu nombre tiene " +
+          nombre.length +
+          " caracteres, incluídos espacios. <br>"
+      );
+      document.writeln(
+        "La primera letra A de tu nombre está en la posición: " +
+          nombre.toLowerCase().indexOf("a") +
+          "<br>"
+      );
+      document.writeln(
+        "La última letra A de tu nombre está en la posición: " +
+          nombre.toLowerCase().lastIndexOf("a") +
+          "<br>"
+      );
+      document.writeln(
+        "Tu nombre menos las 3 primeras letras es: " +
+          nombre.slice(3, nombre.length) +
+          "<br>"
+      );
+      document.writeln(
+        "Tu nombre todo en mayúsculas es: " + nombre.toUpperCase() + "<br>"
+      );
+      var hoy = new Date();
+      var dd = hoy.getDate();
+      var mm = hoy.getMonth() + 1;
+      var yy = hoy.getFullYear();
+      var age = yy - anho;
+      if (mm < mes || (mm === mes && dd < dia)) {
+        age--;
+      }
+      document.writeln("Tu edad es: " + age + "<br>");
+
+      var nacimiento = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"][
+        new Date(anho, mes-1, dia).getDay()
+      ];
+      document.writeln("Naciste un feliz " + nacimiento + " de " + anho + "<br>");
+      document.writeln("El coseno de 180 es: " + Math.cos(180) + "<br>");
+      document.writeln("El número mayor de (34,67,23,75,35,19) es: " + Math.max(34,67,23,75,35,19) + "<br>");
+      document.writeln("Ejemplo de número al azar: " + Math.floor(Math.random()*(1000 - 1 + 1) + 1) + "<br>");
+    </script>
+  </body>
+</html>
