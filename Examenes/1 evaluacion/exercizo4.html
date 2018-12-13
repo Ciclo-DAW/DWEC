@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="">
+<title></title>
+
+</head>
+
+<body>
+    <div><p id="fecha"></p></div>
+	<input type=text value="" id="texto">
+	
+	<input type=button value="sumar Dias" id="dias" onclick="sumaDias()">
+	<input type=button value="sumar Meses" id="meses" onclick="sumaMeses()">
+	<input type=button value="sumar Años" id="años" onclick="sumaAnhos()">
+    
+    <script>
+        var fecha = new Date();
+        var months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        var month = months[fecha.getMonth()];
+        
+        function mostrarFecha(){
+            var fechaElemento = document.getElementById("fecha");
+            fechaElemento.innerHTML = "Hoy es " + fecha.getDay() + " de " + month + " de " + fecha.getFullYear();
+        }
+        mostrarFecha();
+        
+        function sumaDias(){
+            
+        }
+    </script>
+	
+</body>
+</html>

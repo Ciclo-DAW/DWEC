@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<meta name="author" content="">
+<script>
+    var counter = 0;
+    function lanzar(){
+        var number = Math.floor((Math.random() * 6) +1);
+        document.getElementById("imaxe").src = "imagenes/" + number +".png";
+        window.opener.document.getElementById("mensaxe").innerHTML = window.opener.document.getElementById("mensaxe").innerHTML + "Xerouse o valor " + number + "<br>";
+
+        counter++;
+    }
+    
+    function cerrar(){
+         window.opener.document.getElementById("lanzamentos").innerHTML = "Lanzaches o dado " + counter + " veces";
+        window.close();
+    }
+</script>
+    
+</head>
+<body>
+<img id='imaxe' src='imagenes/1.png'>
+<input type=submit value='lanzar' onclick='lanzar()'>
+<input type=submit value='cerrar' onclick='cerrar()'>
+</body>
+</html>

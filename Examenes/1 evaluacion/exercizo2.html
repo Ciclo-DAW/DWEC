@@ -1,0 +1,50 @@
+﻿<!DOCTYPE hml PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+    <title></title>
+	
+	<style type="text/css">
+		div{				
+			text-align: center;	
+			font-size: 200%;
+			float: left;
+			margin: 20px;
+		}
+	</style>
+    
+	
+	
+  </head>
+  
+  <body>
+		<div id="arbol"></div>
+      
+      <script type="text/javascript">
+        
+        var arbol = document.getElementById("arbol");
+        console.log(arbol);
+        var altura = 0;
+        while(altura > 15 || altura < 8){
+           altura = parseInt(prompt("Introduzca un valor entre 8 y 15"));
+        }
+
+        var asterisco = "<span style='color:green;'>*</span>";
+        var arbolLinea = arbol.innerHTML;
+        for(var i = 1; i <= altura; i++){
+            arbolLinea = arbolLinea + asterisco;
+            console.log(arbolLinea);
+            arbol.innerHTML = arbol.innerHTML + "<br>" + arbolLinea;                       
+        }
+        for(var i = 1; i<=4; i++){
+            arbol.innerHTML = arbol.innerHTML + "<br>" + "<span style='color:brown;'>**</span>";
+        }  
+          
+          
+          
+        
+	
+ 	</script>
+  </body>
+  </html>
