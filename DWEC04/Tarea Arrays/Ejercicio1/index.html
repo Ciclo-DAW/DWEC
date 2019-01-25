@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>Ejercicio 1</header>
+
+    <script>
+        var array = ["España", "Francia", "Suecia", "Italia", "Noruega", "Portugal", "Holanda"];
+
+        array.splice(3, 0, "Grecia", array.pop());
+        array.shift();
+        array.unshift("Bélgica", "Alemania", "Dinamarca");
+        array.push(array.splice(4, 1)[0], "Suiza");
+
+        //Forma alternativa
+        /* 
+        array.splice(3, 0, "Grecia", array.pop());
+        array.splice(1, 0, "Bélgica", "Alemania", "Dinamarca");
+        array.push(array.splice(5, 1)[0], "Suiza");
+        array.shift();
+        */
+        console.log(array);
+    </script>
+</body>
+
+</html>
