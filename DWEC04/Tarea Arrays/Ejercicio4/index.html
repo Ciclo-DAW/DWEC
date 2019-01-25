@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="">
+	<title></title>
+	<script>
+	</script>
+</head>
+
+<body>
+	Introduce una palabra: (letras permitidas A-Z y Ñ)
+	<br>
+	<input type=text value="" id="texto">
+	<input class="add" type=button value="Añadir a la lista">
+	<input class="end" type=button value="Terminar">
+	<hr>
+	<p id="mensaje"></p>
+
+	<script>
+		var valor;
+		var lista = [];
+		var mensaje = document.querySelector('#mensaje');
+
+		document.querySelector('.add').addEventListener('click', addToList);
+		document.querySelector('.end').addEventListener('click', showList);
+
+		function addToList() {
+			valor = document.querySelector('#texto').value;
+			if (/^[a-zA-Z]|[ñÑ]+$/.test(valor)) {
+				lista.push(valor);
+				document.querySelector('#texto').value = '';
+				mensaje.innerHTML = 'Elemento ' + valor + ' añadido correctamente. <br> Has introducido ' + lista.length +
+					' palabras';
+			} else {
+				mensaje.innerHTML = 'Palabra no válida. Introduzca caracteres alfabéticos A-Z,Ñ';
+			}
+		}
+
+
+		function showList() {
+			mensaje.innerHTML = 'Has introducido los siguientes elementos: <ol>';
+			lista.sort();
+			for (i = 0; i < lista.length; i++) {
+				mensaje.innerHTML += '<li>' + lista[i] + '</li>';
+			}
+			mensaje.innerHTML += '</ol>';
+		}
+	</script>
+</body>
+
+</html>
