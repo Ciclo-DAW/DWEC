@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>Ejercicio 2</header>
+
+    <h1>Elementos del array:</h1>
+
+    <div class="matriz"></div>
+    <p class="longitud"></p>
+    <p class="suma-pares"></p>
+    <p class="suma-diagonal"></p>
+
+    <script>
+        var ui = document.querySelector(".matriz");
+        var n = parseInt(prompt("Introduzca un número"));
+        var sumapares = 0;
+        var diagonal = 0;
+
+        if (n > 0) {
+            var matrix = [];
+            for (i = 0; i < n; i++) {
+                matrix[i] = [];
+                for (j = 0; j < n; j++) {
+                    matrix[i][j] = Math.floor(Math.random() * (10) + 1);
+                }
+            }
+
+            for (i = 0; i < matrix.length; i++) {
+                ui.innerHTML += "<div class='row'>";
+                for (j = 0; j < matrix[i].length; j++) {
+                    ui.innerHTML += "<span>" + matrix[i][j] + "</span>";
+                    if (j % 2 == 0) {
+                        sumapares += matrix[i][j];
+                    }
+                    if (i == j) {
+                        diagonal += matrix[i][j];
+                    }
+                }
+                ui.innerHTML += "</div>";
+            }
+
+            document.querySelector('.longitud').innerHTML = "La longitud del array es: " + matrix.length;
+            document.querySelector('.suma-pares').innerHTML =
+                "La suma de los elementos situados en columnas pares es: " + sumapares;
+            document.querySelector('.suma-diagonal').innerHTML = "La suma de la diagonal es: " + diagonal;
+
+        } else {
+            alert("Introduzca un número mayor que cero");
+        }
+    </script>
+
+    <style>
+        .row {
+            margin-bottom: 20px;
+        }
+
+        span {
+            margin-right: 20px;
+        }
+    </style>
+</body>
+
+</html>
