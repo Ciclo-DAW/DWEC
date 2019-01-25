@@ -59,15 +59,13 @@
             document.querySelector('.suma-diagonal').innerHTML = "La suma de la diagonal es: " + diagonal;
 
             for (var i = 0; i < matrix.length; i++) {
-                traspuesta.push([]);
-            };
-
-            for (var i = 0; i < matrix.length; i++) {
+                traspuesta[i] = [];
                 for (var j = 0; j < matrix.length; j++) {
-                    traspuesta[j].push(matrix[i][j]);
+                    traspuesta[i][j] = matrix[j][i];
                 };
             };
-            console.log(traspuesta);
+
+
             for (i = 0; i < traspuesta.length; i++) {
                 uiT.innerHTML += "<div class='row'>";
                 for (j = 0; j < traspuesta[i].length; j++) {
@@ -81,8 +79,6 @@
                 }
                 uiT.innerHTML += "</div>";
             }
-
-
         } else {
             alert("Introduzca un número mayor que cero");
         }
