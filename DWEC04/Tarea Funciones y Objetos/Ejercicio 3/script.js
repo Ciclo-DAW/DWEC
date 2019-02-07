@@ -1,6 +1,6 @@
 var alumno = {
   nombre: "Brais",
-  apellidos: "Cao Gonzlez",
+  apellidos: "Cao Gonzalez",
   DNI: "44497522C",
   ModulosMatriculados: ["DAW", "DIW", "DWEC", "DWES", "FOL", "EIE"]
 };

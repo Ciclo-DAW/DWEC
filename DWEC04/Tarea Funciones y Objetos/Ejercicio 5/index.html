@@ -1,0 +1,71 @@
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="">
+	<title> UD4_cola </title>
+	<script>
+		class Cola{
+   	constructor(){
+		this.elementos = [];
+	}
+
+	anadirElemento(elemento){ //se inserta al final del array
+		this.elementos.push(elemento);
+	}
+	
+	extraerElemento (){//se extrae el primer elemento
+		return this.elementos.shift();
+	}
+	estaVacia(){
+		if(this.elementos.length === 0){
+			return true;
+		}
+	}
+	
+	contarElementos(){
+		return this.elementos.length;
+	}
+		
+}
+
+
+var cola = new Cola();
+console.log(cola);
+
+function anadeElemento (){
+	var valor = document.querySelector('#texto').value;
+	var mensaje = document.querySelector('#mensaje');
+	cola.anadirElemento(valor);
+	mensaje.innerHTML = mensaje.innerHTML + "<br>" + "añadiendo elemento: " + valor;
+	
+}
+function extraeElemento (){
+	var mensaje = document.querySelector('#mensaje');
+	if(cola.estaVacia()){
+		mensaje.innerHTML = mensaje.innerHTML + "<br>" + "La cola está vacía";
+	} else{
+		mensaje.innerHTML = mensaje.innerHTML + "<br>" + "quitando elemento de la cola: " + cola.extraerElemento();
+	}
+}
+
+function cuentaElementos(){
+	var mensaje = document.querySelector('#mensaje');
+	mensaje.innerHTML = mensaje.innerHTML + "<br>" + "Hay: " + cola.contarElementos() + " elementos";
+}
+
+
+
+</script>
+</head>
+
+<body>
+	Introduce un elemento en el campo de texto y pulsa añadir elemento:<br>
+	<input type="text" id="texto">
+	<input type="button" value="añadir elemento" onclick="anadeElemento()">
+	<input type="button" value="sacar elemento" onclick="extraeElemento()">
+	<input type="button" value="contar elementos" onclick="cuentaElementos()">
+	<p id="mensaje"></p>
+</body>
+
+</html>
