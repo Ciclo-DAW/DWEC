@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ejemplo captura teclas</title>
+    <script>
+        var eventoControlado = false;
+        window.onload = function () {
+            document.addEventListener("keypress", mostrarInformacionCaracter);
+            document.addEventListener("keyup", mostrarInformacionTecla);
+        }
+
+        function mostrarInformacionCaracter(ev) {
+            var msg = '',
+                caracter;
+            caracter = String.fromCharCode(ev.which);
+            if (ev.which != 0 && ev.which != 13) {
+                msg = 'Teclapulsada: ' + caracter;
+            } else {
+                msg = 'Pulsada tecla especial';
+            }
+            control.innerHTML += msg + '---<br/>';
+            eventoControlado = true;
+        }
+
+        function mostrarInformacionTecla(ev) {
+            console.log('hola');
+
+            var msg = '';
+            var teclaPulsada = ev.keyCode;
+            if (teclaPulsada == 20) {
+                msg = 'Pulsado caps lock (act/des mayúsculas)';
+            } else if (teclaPulsada == 16) {
+                msg = 'Pulsado shift';
+            } else if (eventoControlado == false) {
+                msg = 'Pulsada tecla especial';
+            }
+            if (msg) {
+                control.innerHTML += msg + '---<br/>';
+            }
+            eventoControlado = false;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="cabecera">
+        <h3>Ejemplo JavaScript: pulse una tecla</h3>
+    </div>Página 4de 6<div id="control"> </div>
+</body>
+
+</html>
