@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="mailto:micorreo@servidor.com" method="post" enctype="text/plain">
+        <h2>FORMULARIO DE INSCRIPCION</h2>
+        <fieldset>
+            <legend>datos personales</legend>
+            <p>Nombre:
+                <input type="text" id="campo_1" name="nombre" /><br> Primer apellido:
+                <input type="text" id="campo_2" name="apellido1" size="25" /><br>Segundo apellido;
+                <input type="text" id="campo_3" name="apellido2" size="25" /><br></p>
+            <p>Dirección:
+                <input type="text" id="campo_4" name="direccion" size="50" value="calle o plaza, num y piso." />
+            </p>
+            <p>e-mail:
+                <input type="text" id="campo_5" name="e-mail" size="35" value=" @ " />
+            </p>
+            <p>contraseña:
+                <input type="password" id="campo_6" name="contraseña" />
+            </p>
+        </fieldset>
+    </form>
+    <p id="mensaje"></p>
+</body>
+
+<script>
+    var indice;
+    var elementos = document.querySelector('form').elements;
+    var elementoSeleccionado;
+    var posElemento;
+    console.log(elementos);
+
+    document.addEventListener('focusin', function (event) {
+        if (event.target.nodeName.toLowerCase() == 'input') {
+            event.target.style.border = '4px solid blue';
+            elementoSeleccionado = elementos.namedItem(event.target.id); //Nodo del elemento sobre el que tenemos focus
+            posElemento = Array.prototype.slice.call(elementos).indexOf(elementoSeleccionado); //Conversión a array para obtener el indice del elemento sobre el que tenemos focus inicialmente
+        }
+    });
+    document.addEventListener('focusout', function (event) {
+        if (event.target.nodeName.toLowerCase() == 'input') {
+            event.target.style.border = '1px solid black';
+        }
+    });
+    document.addEventListener('keyup', function (event) {
+        if (event.which == 40 || event.which == 13) {
+            if (posElemento == 6) {
+                elementos[1].focus();
+            } else {
+                elementos[posElemento + 1].focus();
+            }
+        }
+    });
+    document.addEventListener('keyup', function (event) {
+        if (event.which == 38) {
+            if (posElemento == 1) {
+                elementos[6].focus();
+            } else {
+                elementos[posElemento - 1].focus();
+            }
+        }
+    });
+</script>
+
+</html>
