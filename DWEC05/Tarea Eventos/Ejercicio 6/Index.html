@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=º, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Maximo caracteres</p>
+    <textarea class="area" name="" id="" cols="30" rows="10"></textarea>
+    <p class="texto"></p>
+    <div class="progress">
+        <div class="bar"></div>
+    </div>
+</body>
+<script>
+    document.querySelector('.area').value = "";
+    var maximo = prompt('Introduzca el maximo de caracteres');
+    document.querySelector('.texto').innerHTML = "Le quedan " + maximo + " caracteres";
+    document.querySelector('.area').addEventListener('keyup', function (event) {
+        var texto = document.querySelector('.area').value;
+        document.querySelector('.texto').innerHTML = "Le quedan " + (maximo - texto.length) + " caracteres";
+        document.querySelector('.bar').style.width = ((texto.length / maximo) * 100) + "%";
+        if (texto.length == maximo) {
+            alert('Has alcanzado el maximo de caracteres');
+        }
+    });
+
+    document.querySelector('.area').addEventListener('keypress', function (event) {
+        var texto = document.querySelector('.area').value;
+        if (texto.length == maximo) {
+            alert('Has alcanzado el maximo de caracteres');
+            event.preventDefault();
+        }
+    });
+</script>
+
+<style>
+    .progress {
+        width: 200px;
+        background-color: rgb(197, 197, 197);
+        height: 20px;
+    }
+
+    .bar {
+        background-color: green;
+        height: 100%;
+        width: 0%;
+    }
+</style>
+
+</html>
