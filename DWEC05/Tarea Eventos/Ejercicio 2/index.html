@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>al pulsar enter en el cuadro de texto el contenido se escribirá en p</span><input class="entrada" type="text">
+
+    <p class="salida" style="background-color: aqua">&nbsp;</p>
+
+    <script>
+        var entrada = document.querySelector('.entrada');
+        var salida = document.querySelector('.salida');
+        entrada.addEventListener('keyup', function (event) {
+            if (event.which == 13 || event.keyCode == 13) {
+                salida.innerHTML = entrada.value;
+            }
+        })
+    </script>
+</body>
+
+</html>
