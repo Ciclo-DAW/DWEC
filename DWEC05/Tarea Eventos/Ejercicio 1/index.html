@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> Modelo de eventos avanzados W3C </title>
+</head>
+
+<body>
+    <h1> Modelo de eventos avanzados W3C </h1>
+    <h3 id="w3c">modelo del W3C </h3>
+    <h3 id="w3canonima">modelo del W3C con funciones anónimas </h3>
+
+    <p class="mensaje"></p>
+    <script>
+        var w3c = document.querySelector('#w3c');
+        var w3canonima = document.querySelector('#w3canonima');
+        var contador = 0;
+        w3c.addEventListener('click', () => {
+            contador++;
+            document.querySelector('.mensaje').innerHTML = contador;
+        })
+        w3canonima.addEventListener('mouseover', function () {
+            this.style.color = "red";
+            this.style.backgroundColor = "yellow";
+        });
+        w3canonima.addEventListener('mouseleave', function () {
+            this.style.color = "black";
+            this.style.backgroundColor = "white";
+        });
+
+        var c = true;
+        document.addEventListener('mousedown', function () {
+            if (c) {
+                w3canonima.style.backgroundColor = "blue";
+                c = false;
+            } else {
+                w3canonima.style.backgroundColor = "black";
+                c = true;
+            }
+        })
+    </script>
+</body>
+
+</html>
