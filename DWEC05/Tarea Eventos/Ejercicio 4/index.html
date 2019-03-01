@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="visor">
+        <h1 class="title">Raton</h1>
+        <p class="info1"></p>
+        <p class="info2"></p>
+    </div>
+
+    <style>
+        .visor {
+            width: 200px;
+            background-color: rgb(239, 231, 253);
+            padding: 10px;
+            border: 1px solid gray;
+        }
+
+        .title {
+            margin: 0;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('mousemove', function (event) {
+            document.querySelector('.visor').style.backgroundColor = "rgb(253, 231, 231)";
+            document.querySelector('.info1').innerHTML = event.clientX + ', ' + event.clientY;
+            document.querySelector('.info2').innerHTML = "";
+        });
+        document.addEventListener('click', function (event) {
+            document.querySelector('.visor').style.backgroundColor = "rgb(252, 136, 136)";
+            document.querySelector('.info1').innerHTML = event.clientX + ', ' + event.clientY;
+            document.querySelector('.info2').innerHTML = "";
+        });
+
+        document.addEventListener('keypress', function (event) {
+            document.querySelector('.visor').style.backgroundColor = "rgb(133, 156, 255)";
+            document.querySelector('.title').innerHTML = "Teclado";
+            document.querySelector('.info1').innerHTML = "Codigo: " + event.which;
+            document.querySelector('.info2').innerHTML = "Caracter: " + String.fromCharCode(event.which).toUpperCase();
+        });
+    </script>
+</body>
+
+</html>
