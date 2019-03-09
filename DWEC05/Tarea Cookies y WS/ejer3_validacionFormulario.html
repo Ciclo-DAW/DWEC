@@ -1,28 +1,60 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script>
-</script>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <script>
+   </script>
 </head>
 
 <body>
-<form  action="mailto:micorreo@servidor.com" method="post" enctype="text/plain">
-<h2>FORMULARIO DE INSCRIPCION</h2>
-<fieldset>
-<legend>datos personales</legend>
-<p>Nombre: <input type="text" id="campo_1" name="nombre" size=25/><br> 
-   Primer apellido: <input type="text" id="campo_2" name="apellido1" size="50"/><br>
-   Segundo apellido;<input type="text" id="campo_3" name="apellido2" size="50"/><br>
-</p>
-<p>Telefono: <input type="text" id="campo_4" name="telefono" size="50" value=""/></p>
-<p>e-mail: <input type="text" id="campo_5" name="e-mail" size="50" value="@"/></p>
-<input type="submit" id="btn" value="Enviar"></input>
-</fieldset>
-</form>
+   <form action="mailto:micorreo@servidor.com" method="post" enctype="text/plain">
+      <h2>FORMULARIO DE INSCRIPCION</h2>
+      <fieldset>
+         <legend>datos personales</legend>
+         <p>Nombre: <input type="text" id="campo_1" name="nombre" size=25 pattern="[a-zA-Zá-úºª\-'\s]+" required /><br>
+            Primer apellido: <input type="text" id="campo_2" name="apellido1" size="50" pattern="[a-zA-Zá-úºª\-'\s]+" required /><br>
+            Segundo apellido;<input type="text" id="campo_3" name="apellido2" size="50" pattern="[a-zA-Zá-úºª\-'\s]+" /><br>
+         </p>
+         <p>Telefono: <input type="text" id="campo_4" name="telefono" size="50" value="" pattern="^[\+]{1}[0-9]{2,3}[0-9]{7,9}"/></p>
+         <p>e-mail: <input type="text" id="campo_5" name="e-mail" size="50" value="" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9_-]+\.?[a-zA-Z0-9_-]{0,}\.[a-zA-Z]{2,}$" required/></p>
+         <input type="submit" id="btn" value="Enviar"></input>
+      </fieldset>
+   </form>
 
-<p id="mensaje"></p>
+   <p id="mensaje"></p>
 
+   <script>
+      document.forms[0].setAttribute('novalidate', true);
 
+      var hasError = function (field) {
+         // Don't validate submits, buttons, file and reset inputs, and disabled fields
+         if (field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type ===
+            'button') return;
+
+         // Get validity
+         var validity = field.validity;
+
+         // If valid, return null
+         if (validity.valid) return 'Campo correcto';
+
+         // If field is required and empty
+         if (validity.valueMissing) return 'Por favor llena este campo.';
+
+         // If pattern doesn't match
+         if (validity.patternMismatch) return 'Por favor cumple el formato.';
+
+         // If all else fails, return a generic catchall error
+         return 'El valor es inválido.';
+
+      };
+      document.addEventListener('blur', function (event) {
+
+         var error = hasError(event.target);
+         console.log(error);
+
+      }, true);
+   </script>
 </body>
+
 </html>
