@@ -1,18 +1,111 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title>cookies</title>
-	
-	</head>
-<body>
-<button type="button" id="verTodas">Ver todas las cookies</button>
-<button type="button" id="crearCookie">Crear cookie</button>		
-<button type="button" id="modificarCookie">Modificar cookie</button>
-<button type="button" id="leerCookie">Leer cookie</button>
-<button type="button" id="borrarCookie">Borrar cookie</button>
-<script>
 
-</script>			
+</head>
+
+<body>
+	<button type="button" id="verTodas">Ver todas las cookies</button>
+	<button type="button" id="crearCookie">Crear cookie</button>
+	<button type="button" id="modificarCookie">Modificar cookie</button>
+	<button type="button" id="leerCookie">Leer cookie</button>
+	<button type="button" id="borrarCookie">Borrar cookie</button>
+	<script>
+		var fecha = new Date();
+		var showAllButton = document.querySelector('#verTodas');
+		var createButton = document.querySelector('#crearCookie');
+		var modifyButton = document.querySelector('#modificarCookie');
+		var readButton = document.querySelector('#leerCookie');
+		var deleteButton = document.querySelector('#borrarCookie');
+
+		showAllButton.addEventListener('click', mostrarCookies);
+		createButton.addEventListener('click', crearCookie);
+		modifyButton.addEventListener('click', modificarCookie);
+		readButton.addEventListener('click', leerCookie);
+		deleteButton.addEventListener('click', borrarCookie);
+		document.cookie = null + "= borrada; expires=" + fecha;
+
+		function mostrarCookies() {
+			alert('Cookies almacenadas: ' + document.cookie);
+			console.log(document.cookie);
+
+		}
+
+		function crearCookie() {
+			var nombre;
+			//Comprobamos que el nombre de la cookie no es una cadena vacía o null
+			do {
+				nombre = prompt('Nombre de la cookie');
+			} while (nombre == null || nombre == "");
+			var valor = prompt('Valor de la cookie');
+			var dias = prompt('Dias para la expiración de la cookie');
+			var fechaCookie = new Date(fecha);
+			fechaCookie.setDate(fechaCookie.getDate() + dias);
+			document.cookie = nombre + "=" + valor + "; expires=" + fechaCookie;
+		}
+
+		function modificarCookie() {
+			var nombre;
+			do {
+				nombre = prompt('Nombre de la cookie a modificar');
+			} while (nombre == null || nombre == "");
+			//Comprobamos si existe la cookie, en este caso le pasamos "false" a la función porque no queremos que nos la imprima si la encuentra, solo necesitamos su valor de retorno.
+			if (existeCookie(nombre, false)) {
+				var valor = prompt('Nuevo valor para la cookie: ');
+				var dias = prompt('Nuevo valor de días para la expiración de la cookie: ');
+				var fechaCookie = new Date(fecha);
+				fechaCookie.setDate(fechaCookie.getDate() + dias);
+				document.cookie = nombre + "=" + valor + "; expires=" + fechaCookie;
+			} else {
+				alert('Esa cookie no existe');
+			}
+		}
+
+		function leerCookie() {
+			do {
+				nombre = prompt('Introduzca el nombre de la cookie');
+			} while (nombre == null || nombre == "");
+			var cookieArray = document.cookie.split(';');
+			//Llamamos la función existeCookie con el valor true para que si encuentra la cookie la muestre
+			existeCookie(nombre, true);
+		}
+
+		function borrarCookie() {
+			do {
+				nombre = prompt('Nombre de la cookie a borrar');
+			} while (nombre == null || nombre == "");
+			if (existeCookie(nombre, false)) {
+				var fechaCookie = new Date(fecha);
+				fechaCookie.setDate(fechaCookie.getDate() - 1);
+				if (nombre != null) {
+					document.cookie = nombre + "= borrada; expires=" + fechaCookie;
+				}
+			} else {
+				alert('Esa cookie no existe');
+			}
+		}
+
+		function existeCookie(nombre, print) { //Si queremos que la imprima al encontrarla le pasamos true, si no false
+			var cookieArray = document.cookie.split(';');
+			for (var i = 0; i < cookieArray.length; i++) {
+				var c = cookieArray[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(nombre) == 0) {
+					if (print == true) {
+						alert("El valor de la cookie introducida es: " + c.substring(nombre.length + 1, c.length));
+					}
+					return true;
+				}
+			}
+			alert('Esa cookie no existe');
+			return false;
+		}
+	</script>
 </body>
-</html> 
+
+</html>

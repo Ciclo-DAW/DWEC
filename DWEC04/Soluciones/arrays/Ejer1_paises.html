@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="">
+<title></title>
+<script>
+//definición del array
+var paises = ["España", "Francia", "Suecia", "Italia", "Noruega", "Portugal", "Holanda"];
+
+/*podemos emplear el método splice para insertar y borrar elementos a la vez. 
+La siguiente orden eliminará el elemento España situado en la primera posición del array (El valor 1 en el segundo argumento, nos indica que se eliminará el elemento de la posición 0) 
+Además insertamos los elementos Grecia, Suiza,Alemania y Dinamarca. */
+
+paises.splice(0,1, "Grecia","Suiza","Alemania","Dinamarca");
+
+//ordenamos el array
+paises.sort();
+
+//insertamos “Belgica” en la primera posición. 
+paises.splice(0,0, "Belgica");
+
+
+function mostrarPaises(){
+	var cadena = "";
+	paises.forEach(
+		function (pais){
+			cadena += pais + "<br>";
+		}
+	);
+	return cadena;
+}
+</script>
+</head>
+<body>
+
+<p id="mensaje">
+<script>
+document.write(mostrarPaises());
+</script>
+</p>	
+</body>
+</html>
