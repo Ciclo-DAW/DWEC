@@ -155,19 +155,19 @@ window.onload = function() {
     function intentosEnvio() {
         var contador = 0;
         var nombre = "contador";
+        var intentos = document.querySelector("#intentos");
         if (!existeCookie("contador")) {
             document.cookie = nombre + "=" + contador;
-            document.querySelector("#intentos").innerHTML = "Intento de Envíos del formulario: " + contador;
         } else {
             contador = existeCookie("contador");
             contador++;
             document.cookie = nombre + "=" + contador;
-            document.querySelector("#intentos").innerHTML = "Intento de Envíos del formulario: " + contador;
         }
+        intentos.innerHTML = "Intento de Envíos del formulario: " + contador;
     }
 
+    //Esto lo hago por si existen otras cookies, modificar solamente la del contador
     function existeCookie(nombre) {
-        //Si queremos que la imprima al encontrarla le pasamos true, si no false
         var cookieArray = document.cookie.split(";");
         for (var i = 0; i < cookieArray.length; i++) {
             var c = cookieArray[i];
