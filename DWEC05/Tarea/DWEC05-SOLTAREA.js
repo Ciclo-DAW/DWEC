@@ -182,6 +182,6 @@ window.onload = function() {
     }
 
     function confirmarEnvio() {
-        return confirm("¿Deseas enviar el formulario?");
+        return confirm("¿Acepta enviar el formulario?");
     }
 };
