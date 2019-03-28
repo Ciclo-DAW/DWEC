@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style>
+	.error {
+		border: solid 2px #FF0000;
+	}
+</style>
+<script src="lib_validacion.js"></script>
+</head>
+
+<body>
+<form  action="mailto:micorreo@servidor.com" method="post" enctype="text/plain">
+<h2>FORMULARIO</h2>
+<fieldset>
+<legend>datos personales</legend>
+<p>Nombre: <input type="text" id="campo_1" name="nombre" max="25" pattern="^[A-ZÁÉÍÓÚ](ª|\.|[a-záéíóú]+)(\s[A-ZÁÉÍÓÚ](ª|[a-záéíóú]+))*$" required /><br> 
+   Primer apellido: <input type="text" id="campo_2" name="apellido1" size="25" pattern="^([A-Z][a-záéíóú]+\s)?(([a-z]{2,3}\s){1,2})?[A-Z][a-záéíóú]+$" required /><br>
+   Segundo apellido: <input type="text" id="campo_3" name="apellido2" size="25" pattern="^([A-Z][a-záéíóú]+\s)?(([a-z]{2,3}\s){1,2})?[A-Z][a-záéíóú]+$" /><br>
+</p>
+<p>Telefono: <input type="text" id="campo_4" name="telefono" size="50" value="" pattern="^\+\d{1,3}(-\d{1,3})?(\d{7,9})$"/></p>
+<p>e-mail:<input type="text" id="campo_5" name="e-mail" value="@" pattern="[A-Za-z0-9]+([\.\-_])?[A-Za-z0-9]+@(\w+[\.\-_])+[A-Za-z]{2,4}" required></p>
+
+<input type="submit" id="btn" value="Enviar"></input>
+
+
+</fieldset>
+</form>
+
+<p id="mensaje"></p>
+
+
+</body>
+</html>
