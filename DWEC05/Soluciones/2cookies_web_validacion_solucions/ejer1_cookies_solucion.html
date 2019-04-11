@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>cookies</title>
+<script>
+
+window.addEventListener("load", iniciar, false);
+function iniciar (e){
+
+	document.getElementById("verTodas").addEventListener("click",verCookies);
+	document.getElementById("crearCookie").addEventListener("click",crearModCookie);
+	document.getElementById("modificarCookie").addEventListener("click",crearModCookie);
+	document.getElementById("leerCookie").addEventListener("click",leerCookie);
+	document.getElementById("borrarCookie").addEventListener("click",borrarCookie);
+
+}
+
+function verCookies(){
+	alert ("cookies actuales: \n"+document.cookie);
+	
+}
+function crearModCookie(){
+	var nombre = prompt("Nombre de la cookie");
+	var valor = prompt("valor de la cookie");
+	var expiracion = parseInt(prompt("introduce numero de días para la expiración"));
+	if ( nombre != null && valor != null ) {
+		setCookie(nombre,valor,expiracion);
+		verCookies();
+	}
+	
+}
+function leerCookie(){
+	var nombre = prompt ("introduce nombre de la cookie");
+	var resultado = getCookie(nombre);
+	alert(resultado);
+}
+function borrarCookie(){
+	var nombre = prompt ("introduce nombre de la cookie a borrar");
+	deleteCookie(nombre);
+	verCookies();
+}
+
+function setCookie (nombre,valor,expiracion){
+//expiracion es un valor en días
+	var d = new Date();
+	d.setTime(d.getTime()+expiracion*24*60*60*1000);
+	var expiracion = "expires="+d.toUTCString();
+	alert(expiracion);
+	document.cookie = nombre+"="+valor+";"+expiracion+";path=/";
+	alert(document.cookie);
+}
+
+function getCookie(nombre){
+	var nom = nombre+"=";
+	var array = document.cookie.split(";");
+	for (var i=0;i<array.length;i++){
+		var c = array[i];
+		while (c.charAt(0)==" "){
+			c = c.substring(1)
+		}
+		if (c.indexOf(nom)==0){
+			return c.substring(nom.length,c.length);
+		}
+	}
+	return "";
+	
+}
+function deleteCookie(nombre){
+	setCookie(nombre,"",0); //ponemos una fecha de expiracion pasada con 0
+}
+</script>	
+</head>
+<body>
+<button type="button" id="verTodas">Ver todas las cookies</button>
+<button type="button" id="crearCookie">Crear cookie</button>		
+<button type="button" id="modificarCookie">Modificar cookie</button>
+<button type="button" id="leerCookie">Leer cookie</button>
+<button type="button" id="borrarCookie">Borrar cookie</button>
+
+	
+</body>
+</html> 

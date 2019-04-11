@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>webstorage</title>
+<script>
+
+window.addEventListener("load", iniciar, false);
+
+function iniciar(){
+	
+	var btnIncrementar = document.getElementById("incrementar");
+	var btnDecrementar = document.getElementById("decrementar");
+	var btnLogout = document.getElementById("logout");
+
+	var contador =  document.getElementById("contador");
+	
+	//comprobar si el navegador soporta webstorage
+
+	if (typeof(Storage)!== "undefined"){
+		
+		alert("el navegador soporta WebStorage");
+		
+		if(localStorage.getItem("usuario") != null){
+			document.getElementById("saludo").innerHTML="Bienvenido de nuevo, "+localStorage.getItem("usuario")+"!";
+		
+		} else {
+			localStorage.setItem("usuario",prompt("Cúal es tu nombre?"));
+			document.getElementById("saludo").innerHTML="Primera visita, "+localStorage.getItem("usuario")+"!";
+			
+		}
+		//contador
+		if (!sessionStorage.getItem("contador")){
+			sessionStorage.setItem("contador","0");//se utilizan cadenas de texto
+			
+		}
+		contador.innerHTML = "Contador: "+sessionStorage.getItem("contador");
+		//botones incrementar/decrementar
+	
+		btnIncrementar.addEventListener("click",incrementar);
+		btnDecrementar.addEventListener("click",decrementar);
+		btnLogout.addEventListener("click",logout);
+	
+	} else {
+		alert("el navegador NO soporta WebStorage");
+	}
+	
+}
+
+function incrementar(){
+	sessionStorage.setItem("contador",parseInt(sessionStorage.getItem("contador"))+1);
+	contador.innerHTML = "contador: "+ sessionStorage.getItem("contador");
+}
+
+function decrementar(){
+	sessionStorage.setItem("contador",parseInt(sessionStorage.getItem("contador"))-1);
+	contador.innerHTML = "contador: "+ sessionStorage.getItem("contador");
+}
+function logout(){
+	alert("Se ha cerrado la sesion "+localStorage.getItem("usuario"));
+	localStorage.removeItem("usuario");
+	//localStorage.clear()
+	document.getElementById("saludo").innerHTML = "";
+	
+}
+</script>			
+</head>
+<body>
+<button type="button" id="incrementar">Incrementar</button>
+<button type="button" id="decrementar">Decrementar</button>		
+<button type="button" id="logout">Logout</button>
+<p id="saludo"></p>
+<p id="contador"></p>
+
+</body>
+</html> 
