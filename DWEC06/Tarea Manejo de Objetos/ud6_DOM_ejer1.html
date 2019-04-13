@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Creacion y borrado de elementos DOM</title>
-</head>
-<style>
-.miClase {
-	color : red;
-}
-</style>
-<script>
-
-</script>	
-<body>
-<div id='div1'></div>
-<br>
-<textarea id='texto'></textarea>
-<br>
-<button type="button" id="crearparrafo">Crear Parrafo</button>
-<button type="button" id="crearimagen">Crear Imagen</button>		
-<button type="button" id="borrarultimo">Borrar Ultimo</button>
-<button type="button" id="borrarprimero">Borrar Primero</button>
-<button type="button" id="sustituirprimero">Sustituir Primero Vacio</button>
-		
-</body>
-</html> 
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Creacion y borrado de elementos DOM</title>
+    </head>
+    <style>
+        .miClase {
+            color: red;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            mensajes = document.querySelector("#div1");
+            document.querySelector("#crearparrafo").addEventListener("click", function() {
+                par = document.createElement("p");
+                console.log(par);
+                text = document.createTextNode(document.querySelector("#texto").value);
+                par.appendChild(text);
+                console.log(document.querySelector("#texto").value);
+                mensajes.appendChild(par);
+            });
+        };
+    </script>
+    <body>
+        <div id="div1"></div>
+        <br />
+        <textarea id="texto"></textarea>
+        <br />
+        <button type="button" id="crearparrafo">Crear Parrafo</button>
+        <button type="button" id="crearimagen">Crear Imagen</button>
+        <button type="button" id="borrarultimo">Borrar Ultimo</button>
+        <button type="button" id="borrarprimero">Borrar Primero</button>
+        <button type="button" id="sustituirprimero">Sustituir Primero Vacio</button>
+    </body>
+</html>

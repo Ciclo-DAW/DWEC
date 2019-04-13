@@ -1,65 +1,62 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>webstorage</title>
+    </head>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>webstorage</title>
-</head>
+    <body>
+        <button type="button" id="incrementar">Incrementar</button>
+        <button type="button" id="decrementar">Decrementar</button>
+        <button type="button" id="logout">Logout</button>
+        <p id="saludo"></p>
+        <p id="contador"></p>
+        <script>
+            if (typeof Storage !== "undefined") {
+                var inc = document.querySelector("#incrementar");
+                var dec = document.querySelector("#decrementar");
+                var logout = document.querySelector("#logout");
+                var cont = document.querySelector("#contador");
+                var saludo = document.querySelector("#saludo");
 
-<body>
-    <button type="button" id="incrementar">Incrementar</button>
-    <button type="button" id="decrementar">Decrementar</button>
-    <button type="button" id="logout">Logout</button>
-    <p id="saludo"></p>
-    <p id="contador"></p>
-    <script>
-        if (typeof (Storage) !== "undefined") {
-            var inc = document.querySelector('#incrementar');
-            var dec = document.querySelector('#decrementar');
-            var logout = document.querySelector('#logout');
-            var cont = document.querySelector('#contador');
-            var saludo = document.querySelector('#saludo');
+                inc.addEventListener("click", incrementarContador);
+                dec.addEventListener("click", decrementarContador);
+                logout.addEventListener("click", cerrarSesion);
 
-            inc.addEventListener('click', incrementarContador);
-            dec.addEventListener('click', decrementarContador);
-            logout.addEventListener('click', cerrarSesion);
+                //Comprobamos si existe el contador, si no existe lo creamos con valor 0 y actualizamos el frontend.
+                if (sessionStorage.contador) {
+                    cont.innerHTML = sessionStorage.contador;
+                } else {
+                    sessionStorage.contador = 0;
+                    cont.innerHTML = sessionStorage.contador;
+                }
 
-            //Comprobamos si existe el contador, si no existe lo creamos con valor 0 y actualizamos el frontend.
-            if (sessionStorage.contador) {
-                cont.innerHTML = sessionStorage.contador;
+                if (!localStorage.nombre) {
+                    var nombre = prompt("¿Cual es tu nombre?");
+                    localStorage.nombre = nombre;
+                    saludo.innerHTML = "Primera visita, " + localStorage.nombre + "!";
+                } else {
+                    saludo.innerHTML = "Bienvenido de nuevo, " + localStorage.nombre + "!";
+                }
+
+                function incrementarContador() {
+                    sessionStorage.contador = Number(sessionStorage.contador) + 1;
+                    cont.innerHTML = sessionStorage.contador;
+                }
+
+                function decrementarContador() {
+                    sessionStorage.contador = Number(sessionStorage.contador) - 1;
+                    cont.innerHTML = sessionStorage.contador;
+                }
+
+                function cerrarSesion() {
+                    alert("Se ha cerrado la sesión " + localStorage.nombre);
+                    localStorage.removeItem("nombre");
+                    saludo.innerHTML = "";
+                }
             } else {
-                sessionStorage.contador = 0;
-                cont.innerHTML = sessionStorage.contador;
+                alert("Este navegador no soporta web storage");
             }
-
-            if (!localStorage.nombre) {
-                var nombre = prompt('¿Cual es tu nombre?');
-                localStorage.nombre = nombre;
-                saludo.innerHTML = "Primera visita, " + localStorage.nombre + "!";
-            } else {
-                saludo.innerHTML = "Bienvenido de nuevo, " + localStorage.nombre + "!";
-            }
-
-            function incrementarContador() {
-                sessionStorage.contador = Number(sessionStorage.contador) + 1;
-                cont.innerHTML = sessionStorage.contador;
-            }
-
-            function decrementarContador() {
-                sessionStorage.contador = Number(sessionStorage.contador) - 1;
-                cont.innerHTML = sessionStorage.contador;
-            }
-
-            function cerrarSesion() {
-                alert('Se ha cerrado la sesión ' + localStorage.nombre);
-                localStorage.removeItem("nombre");
-                saludo.innerHTML = "";
-            }
-
-        } else {
-            alert("Este navegador no soporta web storage");
-        }
-    </script>
-</body>
-
+        </script>
+    </body>
 </html>

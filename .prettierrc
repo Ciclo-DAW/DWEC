@@ -1,5 +1,5 @@
 {
-  "semi": false,
+  "semi": true,
   "overrides": [
     {
       "files": "*.js",
@@ -24,6 +24,7 @@
     {
       "files": "*.html",
       "options": {
+        "semi": true,
         "tabWidth": 4,
         "printWidth": 110
       }
