@@ -15,8 +15,6 @@
                 item.appendChild(texto);
 
                 for (var i = 0; i < items.length; i++) {
-                    console.log(items.length);
-
                     if (valor.localeCompare(items[0].innerHTML) < 0) {
                         lista.insertBefore(item, items[0]);
                     } else if (valor.localeCompare(items[items.length - 1].innerHTML) > 0) {
