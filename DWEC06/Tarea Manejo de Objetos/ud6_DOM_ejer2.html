@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8">
-<meta name="author" content="conchi">
-<title>Lista de la compra </title>
- <script>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="conchi" />
+        <title>Lista de la compra</title>
+        <script>
+            function anadirElemento() {
+                var valor = document.querySelector("#articulo").value;
+                var lista = document.querySelector("#lista");
+                var items = document.getElementsByTagName("li");
 
-</script>
-</head>
-<body>
- Lista de la compra
-<ul id="lista">
-  <li>Azúcar</li>
-  <li>Cerveza</li>
-  <li>Pan</li>
-  <li>Patatas</li>
-</ul>
-<input type="text" value="" id="articulo"><br> 
-<input type="button" value="Añadir" onclick="anadirElemento()">
-</body>
+                item = document.createElement("li");
+                texto = document.createTextNode(valor);
+                item.appendChild(texto);
+
+                for (var i = 0; i < items.length; i++) {
+                    console.log(items.length);
+
+                    if (valor.localeCompare(items[0].innerHTML) < 0) {
+                        lista.insertBefore(item, items[0]);
+                    } else if (valor.localeCompare(items[items.length - 1].innerHTML) > 0) {
+                        console.log("dos");
+
+                        lista.appendChild(item);
+                    } else if (
+                        valor.localeCompare(items[i].innerHTML) > 0 &&
+                        valor.localeCompare(items[i + 1].innerHTML) <= 0
+                    ) {
+                        console.log("tres");
+                        lista.insertBefore(item, items[i + 1]);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        Lista de la compra
+        <ul id="lista">
+            <li>Azúcar</li>
+            <li>Cerveza</li>
+            <li>Pan</li>
+            <li>Patatas</li>
+        </ul>
+        <input type="text" value="" id="articulo" /><br />
+        <input type="button" value="Añadir" onclick="anadirElemento()" />
+    </body>
 </html>
