@@ -14,11 +14,31 @@
             mensajes = document.querySelector("#div1");
             document.querySelector("#crearparrafo").addEventListener("click", function() {
                 par = document.createElement("p");
-                console.log(par);
                 text = document.createTextNode(document.querySelector("#texto").value);
                 par.appendChild(text);
-                console.log(document.querySelector("#texto").value);
+                par.setAttribute("class", "miClase");
                 mensajes.appendChild(par);
+            });
+
+            document.querySelector("#borrarultimo").addEventListener("click", function() {
+                mensajes.removeChild(mensajes.lastChild);
+            });
+
+            document.querySelector("#borrarprimero").addEventListener("click", function() {
+                mensajes.removeChild(mensajes.firstChild);
+            });
+
+            document.querySelector("#sustituirprimero").addEventListener("click", function() {
+                mensajes.firstChild.innerHTML = "vacio";
+            });
+
+            document.querySelector("#crearimagen").addEventListener("click", function() {
+                url = prompt("Introduzca la URL de la imagen");
+                alt = prompt("Introduzca el texto alternativo para la imagen");
+                imagen = document.createElement("img");
+                imagen.setAttribute("src", url);
+                imagen.setAttribute("alt", alt);
+                mensajes.appendChild(imagen);
             });
         };
     </script>
