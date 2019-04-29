@@ -35,12 +35,36 @@
                             tCell = document.createElement("td");
                             texto = document.createTextNode("fila " + i + ", columna " + j);
                             tCell.appendChild(texto);
+                            tCell.style.border = "1px solid black";
+                            tCell.addEventListener("click", modificarCelda);
                             tRow.appendChild(tCell);
                         }
                         tBody.appendChild(tRow);
                     }
                     table.appendChild(tBody);
                     contenedor.appendChild(table);
+                    table.style.border = "1px solid black";
+                    boton.setAttribute("disabled", true);
+                }
+
+                function modificarCelda(event) {
+                    var celda = event.target;
+                    var texto = event.target.firstChild;
+                    if (texto && texto.nodeType === 3) {
+                        var input = document.createElement("input");
+                        input.classList.add("miClase");
+                        celda.replaceChild(input, texto);
+                        input.focus();
+                        input.addEventListener("keydown", function(event) {
+                            if (event.keyCode === 13) {
+                                var texto = this.value;
+                                var parrafo = document.createElement("p");
+                                parrafo.appendChild(document.createTextNode(texto));
+                                celda.appendChild(parrafo);
+                                celda.removeChild(input);
+                            }
+                        });
+                    }
                 }
             };
         </script>
