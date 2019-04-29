@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Creacion Tabla DOM</title>
+    </head>
+    <style>
+        .miClase {
+            border: red 5px solid;
+        }
+    </style>
+
+    <body>
+        <div id="div1"></div>
+        <button type="button" id="creartabla">Crear Tabla</button>
+        <script>
+            window.onload = function() {
+                var boton = document.querySelector("#creartabla");
+                var contenedor = document.querySelector("#div1");
+                boton.addEventListener("click", crearTabla);
+
+                function crearTabla(event) {
+                    event.preventDefault();
+                    var filas = parseInt(prompt("Introduzca el número de filas"));
+                    var columnas = parseInt(prompt("Introduzca el número de columnas"));
+
+                    var table = document.createElement("table");
+                    var tBody = document.createElement("tbody");
+
+                    var tRow, tCell, texto;
+
+                    for (var i = 0; i < filas; i++) {
+                        tRow = document.createElement("tr");
+                        for (var j = 0; j < columnas; j++) {
+                            tCell = document.createElement("td");
+                            texto = document.createTextNode("fila " + i + ", columna " + j);
+                            tCell.appendChild(texto);
+                            tRow.appendChild(tCell);
+                        }
+                        tBody.appendChild(tRow);
+                    }
+                    table.appendChild(tBody);
+                    contenedor.appendChild(table);
+                }
+            };
+        </script>
+    </body>
+</html>
