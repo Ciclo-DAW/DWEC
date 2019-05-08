@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <script src="jquery-3.4.1.js"></script>
+    </head>
+    <style>
+        .claseP {
+            border: red 5px solid;
+        }
+        .claseDiv {
+            width: 200px;
+        }
+    </style>
+    <body>
+        <div id="ciudades">
+            <div id="galicia">
+                <p id="1">A Coruña</p>
+                <p id="2">Lugo</p>
+                <p id="3">Ourense</p>
+                <p>Vigo</p>
+                <p id="4">Pontevedra</p>
+            </div>
+            <div id="asturias">
+                <p id="1">Gijón</p>
+                <p>Oviedo</p>
+                <p>Avilés</p>
+            </div>
+        </div>
+
+        <script>
+            //a) Obtener todos los elementos de la página
+            var prueba = $("*");
+            console.log(prueba);
+
+            //b) Muestra el nombre de la primera ciudad de dos formas diferentes
+            var ciudad1 = $("#galicia #1");
+            var ciudad1b = $("#1:first");
+            console.log({ ciudad1, ciudad1b });
+
+            //c)Muestra el nombre de la última diucad empleando dos selectores diferentes
+            var ciudad2 = $("p:last");
+            var ciudad2b = $("#asturias p:last-child");
+            console.log({ ciudad2, ciudad2b });
+
+            //d) Obtener todos los elementos p de Galicia
+            var ciudades = $("#galicia p");
+            console.log(ciudades);
+
+            //e) Convierte A Coruña en A CORUÑA
+            var texto = $("#galicia #1").html();
+            $("#galicia #1").html(texto.toUpperCase());
+
+            //f) Obtener los elementos p de Asturias que no tengan atributo id
+            var noid = $("#asturias p:not([id])");
+            console.log(noid);
+
+            //g) Contar el número de elementos p del código anterior
+            var elementos = $("p").length;
+            console.log(elementos);
+
+            //h) Cuando el ratón entre en cada uno de los elementos de tipo <p> el se aplicará un estilo css que ponga un borde de color rojo al elemento <p> correspondiente. Cuando el ratón salga del elemento en cuestión dejará de aplicarse esa clase al elemento. Utiliza los métodos addClass y removeClass
+            $("p")
+                .mouseenter(function() {
+                    $(this).addClass("claseP");
+                })
+                .mouseleave(function() {
+                    $(this).removeClass("claseP");
+                });
+        </script>
+    </body>
+</html>
