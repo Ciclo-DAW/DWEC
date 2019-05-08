@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="jquery-3.4.1.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <ul>
+            <li>Azúcar</li>
+            <li>Galletas</li>
+            <li>Mermelada</li>
+            <li>Pan</li>
+            <li>Sal</li>
+        </ul>
+        <button id="recorrer">Recorrer lista</button>
+        <button id="contar">Numero de elementos</button>
+        <button id="obtener">Recuperar Elemento en posicion</button>
+        <button id="buscar">Buscar elemento</button>
+        <p id="mensaje">Visualizar resultados</p>
+
+        <script>
+            $("#recorrer").on("click", recorrer);
+            $("#contar").on("click", contar);
+            $("#obtener").on("click", obtener);
+            $("#buscar").on("click", buscar);
+
+            function recorrer() {
+                var elemento = $("li:first");
+                $("#mensaje").append(elemento);
+            }
+            function contar() {
+                $("#mensaje").append("<div>" + $("li").length + "</div>");
+            }
+            function obtener() {
+                var pos = parseInt(prompt("Introduzca la posicion"));
+                $("#mensaje").append($("li:nth-child(" + pos + ")").clone());
+            }
+            function buscar() {
+                var texto = prompt("Introduzca el nombre");
+                $("#mensaje").append($("li:contains(" + texto + ")"));
+            }
+        </script>
+    </body>
+</html>
