@@ -1,0 +1,35 @@
+<head>
+<meta charset="utf-8">
+<title>Ejemplo captura teclas</title>
+<script>
+window.addEventListener("load",inicio);
+function inicio(){
+	document.getElementById("mostrar").addEventListener("click",mostrar);
+	console.log("ok");
+}
+
+function mostrar(){
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function (){
+		if (this.readyState == 4 && this.status ==200){
+			var objeto = JSON.parse(this.responseText);
+			//al hacer JSON.parse nos devuelve un objeto JSON
+			console.log("ok");
+			//mostrar
+			document.getElementById("parrafo").innnerHTML = objeto.nombre+ " nació en "+ objeto.nacimiento+ "en "+objeto.pais;
+			
+			//convertir objeto a cadena
+			var cadena = JSON.stringify(objeto);
+			document.getElementById("parrafo").innnerHTML += "El objeto "+objeto+" en modo cadena es: "+cadena; 
+		}
+	}
+	
+	xhr.open("GET","ajax_json_objeto.php",true);
+}
+</script>
+</head>
+<body>
+<button id="mostrar">mostrar</button>
+<p id="parrafo"></p>
+
+</body></html>

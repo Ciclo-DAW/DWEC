@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Coordenas Raton y teclas pulsadas</title>
+
+<style type="text/css">
+body {font-family: arial, helvetica;}
+#info {width:160px; border:thin solid silver; padding:.5em; position:fixed;}
+#info h1 {margin: 0;}
+</style>
+
+<script>
+function visualizarDatos(texto,evento,disp){//modifica el contenido de <div>
+var elementoDiv = document.getElementById("info");
+elementoDiv.innerHTML="<h1>"+disp+"</h1>";
+elementoDiv.innerHTML+=texto;
+switch (evento){
+		case 'click':
+			elementoDiv.style.background="#eec2b9";
+			break;
+		case 'mousemove':	
+			elementoDiv.style.background="#f9f4f3";
+			break;
+		case 'keypress':
+			elementoDiv.style.background="#c9d5f9";
+			break;
+}		
+	
+}//visualizarDatos
+
+function detectarCoordenadas (e){
+	if (!e) e = window.event;
+	switch (e.type){
+		case 'click':
+					visualizarDatos(e.pageX+","+e.pageY,e.type,"Raton");
+					//pageX = Returns the horizontal coordinate of the mouse pointer, relative to the document,
+					//pageY = Returns the vertical coordinate of the mouse pointer, relative to the document,
+					break;
+		case 'mousemove':
+					visualizarDatos(e.clientX+","+e.clientY,e.type,"Raton");
+					//e.clientX = Returns the horizontal coordinate of the mouse pointer, relative to the current window,
+					//e.clientY = Returns the vertical coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered
+					break;
+		case 'keypress':
+					visualizarDatos("Codigo: "+e.which+"<br> Caracter:"+String.fromCharCode(e.charCode),e.type,"Teclado");
+					break;
+	}//switch
+}
+
+window.onload = function (){ //habilitamos los eventos una vez se han cargado todos los elementos de la pagina
+	document.addEventListener("mousemove",detectarCoordenadas);
+	document.addEventListener("click",detectarCoordenadas);
+	document.addEventListener("keypress",detectarCoordenadas);
+	detectarCoordenadas(window.event);
+}
+
+</script>
+</head>
+
+<body>
+
+<div id="info"></div>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+</body>
+</html>
+

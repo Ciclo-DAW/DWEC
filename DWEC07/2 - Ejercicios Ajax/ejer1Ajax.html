@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="texto">
+	<h1>AJAX</h1>
+	<button id="cambiacontenido">Cambia el contenido</button>
+</div>
+<script>
+
+	document.getElementById("cambiacontenido").addEventListener("click",cambiaContenido);
+	function cambiaContenido(){
+		var xhr = new XMLHttpRequest();
+		//funcion que será llamada cuando cambie la propiedad readystate
+		xhr.onreadystatechange = function (){
+		//cada vez que se manda la solicitud va a ir cambiando el estado readystate (de 0 a 1, de 1 a 2, etc..)
+		//cada vez que cambie de estado se ejecuta esta función
+			if (this.readyState==4 && this.status==200){
+				document.getElementById("texto").innerHTML = this.responseText; //permite extraer texto que devuelve la petición
+			}
+		};
+		
+		//.open: especifica la solicitud
+		//tipo: GET (1000Caracts max) en url/POST
+		//archivo: txt. php, json, etc
+		//envio: true o false: método de envío
+		
+		xhr.open("GET","holamundo.txt", true);
+		
+		//.send: envia solicitud al servidor
+		// si empleamos POST debemos pasar los datos por parámetros
+		xhr.send();
+		
+		
+	}
+</script>
+</body>
+</html>

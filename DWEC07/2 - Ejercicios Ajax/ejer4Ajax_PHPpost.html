@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX Con PHP POST</title>
+<meta charset="utf-8">
+<script>
+	window.addEventListener("load",inicio);
+	function inicio(){
+		document.getElementById("nombre").addEventListener("keyup",mostrarNombre);
+	}
+	function mostrarNombre(e){ //evento que ha generado la llamada a mostrar nombre
+		var cadena = e.target.value;
+		var sugerencia = document.getElementById("sugerencia");
+		if (cadena.length==0){
+			sugerencia.innerHTML="";
+			return;
+		} else {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function (){
+			//en cada fase de la peticion se llama a esta funcion
+				if (this.readyState==4 && this.status == 200){
+					sugerencia.innerHTML= this.responseText; //php envia texto
+					
+				}
+			};
+			xhr.open("POST","arraynombres.php?nombre="+cadena,true);
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded"); //indicamos el tipo de los parametros que le pasamos
+			//.send es distinto si pasamos los parametros por GET
+			xhr.send("nombre="+cadena);//En POST pasamos AQUÍ los parametros
+	
+		}
+	};
+	
+</script>
+</head>
+<body>
+<div id="texto">
+	<p>Escribe un nombre en el cuadro inferior:<p>
+	<form>
+		<input type="text" id="nombre"/>
+	</form>
+	<p>Sugerencias: <span id="sugerencia"></span></p>
+</div>
+<table id="demo">
+
+</table>
+
+</body>
+</html>

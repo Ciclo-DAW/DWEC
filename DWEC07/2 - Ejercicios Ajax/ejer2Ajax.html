@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+table,
+th,
+td {
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	padding: 5px;
+}
+</style>
+</head>
+<body>
+<div id="texto">
+	<h1>coleccion de CDs</h1>
+	<button id="cargacatalogo"> Carga el catalogo de CDs </button>
+</div>
+<table id="demo">
+
+</table>
+<script>
+	document.getElementById("cargacatalogo").addEventListener("click",cargarCatalogo);
+	function cargarCatalogo(){
+		var xhr = new XMLHttpRequest();
+		
+		//.open: especifica la solicitud
+		//tipo: GET (1000Caracts max) en url/POST
+		//archivo: txt. php, json, etc
+		//envio: true o false: método de envío. En este caso se trata de una petición ASINCRONA
+		
+		xhr.open("GET","catalogoCDs.xml",true); //true indica ejecucion asíncrona
+		xhr.send();
+		
+		//funcion que será llamada cuando cambie la propiedad readystate
+		xhr.onreadystatechange = function (){
+			if (this.readyState==4 && this.status==200){
+			alert (this.readyState+" "+this.status);
+			//carga el fichero XML
+			
+				var docXML = this.responseXML; 
+				var tabla = "<tr><th>Artista</th><th>Titulo</th></tr>";
+				var discos = docXML.getElementsByTagName("CD");
+				for (var i=0;i<discos.length;i++){
+					tabla += "<tr><td>";
+					tabla += discos[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+					tabla += "</td><td>";
+					tabla += discos[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+					tabla += "</td></tr>";
+					
+				}
+				
+				document.getElementById("demo").innerHTML = tabla;
+				
+			}
+						
+		};
+		
+	}
+</script>
+</body>
+</html>

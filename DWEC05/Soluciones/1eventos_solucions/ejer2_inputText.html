@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Copiar texto a párrafo</title>
+
+<script>
+function copiarContenido(e) { //e es el evento
+if (!e) e = window.event;
+if (e.type == "keypress") { 
+		if ((e.which) == 13) {
+				document.getElementById("contenido").innerHTML = document.getElementById("texto").value
+		} 
+	}
+
+}//copiarContenido
+
+window.addEventListener("load",function (){ //habilitamos los eventos una vez se han cargado todos los elementos de la pÃ¡gina
+	document.getElementById("texto").addEventListener("keypress",copiarContenido);
+});
+</script>
+</head>
+<body>
+al pulsar enter en el cuadro de texto el contenido se escribira en p
+<input type="text" id="texto" value="" size="20"><br>
+<p id="contenido" style="background-color:powderblue;">&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Mostrar ocultar parrafo</title>
+
+<script>
+function muestraOculta(e) { //e es el evento
+	if (e) {
+		if (e.type == "click") { 
+			var trozos = e.target.id.split('_');
+			var numero = trozos[1];
+			var parrafo = document.getElementById('contenidos_' + numero);
+			var enlace = document.getElementById(e.target.id);
+			if (parrafo.style.display == "none") {
+				 parrafo.style.display = 'block';
+				 enlace.innerHTML = "Ocultar contenidos"
+			} else {
+					parrafo.style.display = 'none';
+					enlace.innerHTML = "Mostrar contenidos"
+			}
+		}
+	}
+}//muestraOculta
+
+window.onload = function (){ //habilitamos los eventos una vez se han cargado todos los elementos de la página
+	var enlaces = document.getElementsByTagName("a");
+	for (var i=0 ; i < enlaces.length ; i++)
+		//enlaces[i].onclick = muestraOculta; //tradicional
+		enlaces[i].addEventListener("click",muestraOculta);  //w3c
+	
+}
+</script>
+</head>
+
+<body>
+
+<p id="contenidos_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+<a id="enlace_1" href="#">Ocultar contenidos</a>
+
+<br/>
+
+<p id="contenidos_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+<a id="enlace_2" href="#">Ocultar contenidos</a>
+
+<br/>
+
+<p id="contenidos_3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+<a id="enlace_3" href="#">Ocultar contenidos</a>
+
+</body>
+</html>

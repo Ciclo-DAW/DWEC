@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+	window.addEventListener("load",inicio);
+	function inicio(){
+		document.getElementById("nombre").addEventListener("keyup",mostrarNombre);
+	}
+	function mostrarNombre(e){
+		var cadena = e.target.value;
+		var sugerencia = document.getElementById("sugerencia");
+		if (cadena.length==0){
+			sugerencia.innerHTML="";
+			return;
+		} else {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function (){
+			//en cada fase de la peticion se llama a esta funcion
+				if (this.readyState==4 && this.status == 200){
+					sugerencia.innerHTML= this.responseText; //php envia texto
+					
+				}
+			};
+			xhr.open("GET","arraynombres.php?nombre="+cadena,true); //se indica la cadena de parámetros
+			xhr.send();
+	
+		}
+	};
+	
+</script>
+</head>
+<body>
+<div id="texto">
+	<p>Escribe un nombre en el cuadro inferior:<p>
+	<form>
+		<input type="text" id="nombre"/>
+	</form>
+	<p>Sugerencias: <span id="sugerencia"></span></p>
+	<button id="cargacatalogo">Cambia el contenido</button>
+</div>
+
+</body>
+</html>

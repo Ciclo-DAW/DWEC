@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script>
+var elementos = new Array();
+
+//habilitamos los eventos una vez se han cargado todos los elementos de la pagina
+window.addEventListener("load",function (){ 
+
+	for (var i = 0; i<document.forms[0].elements.length; i++) {
+		document.forms[0].elements[i].addEventListener("keypress",manejador);
+		document.forms[0].elements[i].addEventListener("keydown",manejador);
+		document.forms[0].elements[i].addEventListener("focus",cambiarBorde);
+		document.forms[0].elements[i].addEventListener("blur",cambiarBorde);
+		elementos.push(document.forms[0].elements[i]);
+	}
+	
+});
+
+
+//trata los eventos blur y focus
+function cambiarBorde(e){
+	if (!e) e = window.event;
+	var elemento = document.getElementById(e.target.id);
+	if ( e.type == "focus" ){
+			elemento.style.borderColor = "blue";
+	}
+	else if ( e.type == "blur" ){
+				elemento.style.borderColor = "black"; 
+		}
+}
+
+//trata el evento keypress cursor hacia arriba y cursor hacia abajo
+function manejador (e){
+	if (!e) e = window.event;
+	var nomElem = e.target.id;
+	var elemento = document.getElementById(e.target.id);
+	numElem = parseInt(nomElem.substring(nomElem.length-1));//extraemos el número de campo	
+	
+	if (e.type == "keypress" && e.keyCode == 13){	
+		if (numElem == 6) {numElem=1;}
+		else { 
+			numElem++;
+		}
+	
+		elementos[numElem].focus();
+	
+	} 
+	if (e.type == "keydown") {
+		switch(e.keyCode) { //cursor arriba
+		case 38: if (numElem > 1) {
+					numElem--;
+					elementos[numElem].focus();
+				}
+				break;
+		case 40:  //cursor abajo
+					if (numElem != 6){ 
+						numElem++;
+						elementos[numElem].focus();
+					}
+					break;
+		}
+	}
+}
+
+
+
+</script>
+</head>
+
+<body>
+<form  action="mailto:micorreo@servidor.com" method="post" enctype="text/plain">
+<h2>FORMULARIO DE INSCRIPCION</h2>
+<fieldset>
+<legend>datos personales</legend>
+<p>Nombre: <input type="text" id="campo_1" name="nombre"/><br> 
+   Primer apellido: <input type="text" id="campo_2" name="apellido1" size="25"/><br>
+   Segundo apellido;<input type="text" id="campo_3" name="apellido2" size="25"/><br>
+</p>
+<p>Dirección: <input type="text" id="campo_4" name="direccion" size="50" value="calle o plaza, num y piso."/></p>
+<p>e-mail: <input type="text" id="campo_5" name="e-mail" size="35" value=" @ "/></p>
+<p>contraseña: <input type="password" id="campo_6" name="contraseÃ±a"/></p>
+</fieldset>
+</form>
+
+<p id="mensaje"></p>
+
+
+</body>
+</html>

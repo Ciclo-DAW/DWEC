@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Controlar texto en textarea</title>
+
+<style type="text/css">
+body {font-family: arial, helvetica;}
+#info {width:280px; border:thin solid silver; padding:.5em; position:fixed;}
+#info h1 {margin: 0;}
+
+#bprogreso {
+    width: 100%;
+    background-color: grey;
+}
+#barra {
+    width: 0%;
+    height: 30px;
+    background-color: blue;
+}
+</style>
+
+<script>
+var areatexto, mensaje, barra; 
+var max = 0;
+
+//habilitamos los eventos una vez se han cargado todos los elementos de la pagina
+window.addEventListener("load",function (){ 
+	areatexto = document.getElementById("texto");
+	mensaje = document.getElementById("mensa");
+	
+	max = parseInt( prompt ("Introduce el numero maximo de caracteres que quieres almacenar en el area de texto"));
+
+	while ( isNaN(max) || max == 0 ) { 
+
+		max = parseInt( prompt ("El valor introducido no es válido.\nIntroduce el numero maximo de caracteres que quieres almacenar en el area de texto"));
+		
+	}
+	areatexto.addEventListener("keyup",detectarTecla);
+	mensaje.innerHTML = "Le quedan "+ max + " caracteres";
+	
+});
+
+function actualizarBarra(ctotales,cutilizados){
+    var porcentaje = Math.round((cutilizados*100)/ctotales);
+	barra = document.getElementById("barra");
+	barra.style.width = porcentaje + "%";
+	console.log(porcentaje);
+	
+
+            
+}
+
+//comprueba que el tamaño del texto es menor o igual que el máximo permitido
+function detectarTecla (e){
+	if (!e) e = window.event;
+	switch (e.type){
+		case 'keyup':
+				if ( areatexto.value.length > max ){
+					alert("has sobrepasado el límite de caracteres para este campo");
+					areatexto.value = (areatexto.value).substring(0,(areatexto.value).length-1);
+				}
+				
+				var restantes = max - parseInt(areatexto.value.length);
+				mensaje.innerHTML = "Le quedan "+ restantes +" caracteres";
+				actualizarBarra(max,parseInt(areatexto.value.length));
+					
+				break;
+				
+	}//switch
+}
+
+
+
+</script>
+</head>
+
+<body>
+ 
+<div id="info">Maximo caracteres
+<textarea id="texto" rows="6" cols="30"></textarea>
+<p id="mensa"></p>
+<div id="bprogreso">
+	<div id="barra"></div>
+</div>
+
+</div>
+</body>
+</html>
+

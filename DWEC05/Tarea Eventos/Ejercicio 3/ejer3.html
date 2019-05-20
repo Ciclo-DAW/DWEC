@@ -1,73 +1,78 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>Mostrar ocultar parrafo</title>
-</head>
-<script>
-    document.addEventListener('click', function (event) {
-        event.preventDefault();
-        if (event.target.id === 'enlace_1') {
-            document.querySelector('#contenidos_1').classList.toggle('hide');
-            if (document.querySelector('#contenidos_1').classList.contains("hide")) {
-                document.querySelector('#enlace_1').innerHTML = "Mostrar contenidos";
-            } else {
-                document.querySelector('#enlace_1').innerHTML = "Ocultar contenidos";
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Mostrar ocultar parrafo</title>
+    </head>
+    <script>
+        document.addEventListener("click", function(event) {
+            event.preventDefault()
+            if (event.target.id === "enlace_1") {
+                document.querySelector("#contenidos_1").classList.toggle("hide")
+                if (document.querySelector("#contenidos_1").classList.contains("hide")) {
+                    document.querySelector("#enlace_1").innerHTML = "Mostrar contenidos"
+                } else {
+                    document.querySelector("#enlace_1").innerHTML = "Ocultar contenidos"
+                }
+            } else if (event.target.id === "enlace_2") {
+                document.querySelector("#contenidos_2").classList.toggle("hide")
+                if (document.querySelector("#contenidos_2").classList.contains("hide")) {
+                    document.querySelector("#enlace_2").innerHTML = "Mostrar contenidos"
+                } else {
+                    document.querySelector("#enlace_2").innerHTML = "Ocultar contenidos"
+                }
+            } else if (event.target.id === "enlace_3") {
+                document.querySelector("#contenidos_3").classList.toggle("hide")
+                if (document.querySelector("#contenidos_3").classList.contains("hide")) {
+                    document.querySelector("#enlace_3").innerHTML = "Mostrar contenidos"
+                } else {
+                    document.querySelector("#enlace_3").innerHTML = "Ocultar contenidos"
+                }
             }
-        } else if (event.target.id === 'enlace_2') {
-            document.querySelector('#contenidos_2').classList.toggle('hide');
-            if (document.querySelector('#contenidos_2').classList.contains("hide")) {
-                document.querySelector('#enlace_2').innerHTML = "Mostrar contenidos";
-            } else {
-                document.querySelector('#enlace_2').innerHTML = "Ocultar contenidos";
+        })
+    </script>
+
+    <body>
+        <p id="contenidos_1">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus
+            libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque
+            sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id,
+            aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada.
+            Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu
+            adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum
+            dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.
+        </p>
+        <a id="enlace_1" href="#">Ocultar contenidos</a>
+
+        <br />
+
+        <p id="contenidos_2">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus
+            libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque
+            sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id,
+            aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada.
+            Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu
+            adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum
+            dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.
+        </p>
+        <a id="enlace_2" href="#">Ocultar contenidos</a>
+
+        <br />
+
+        <p id="contenidos_3">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus
+            libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque
+            sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id,
+            aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada.
+            Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu
+            adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum
+            dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.
+        </p>
+        <a id="enlace_3" href="#">Ocultar contenidos</a>
+        <style>
+            .hide {
+                display: none;
             }
-        } else if (event.target.id === 'enlace_3') {
-            document.querySelector('#contenidos_3').classList.toggle('hide');
-            if (document.querySelector('#contenidos_3').classList.contains("hide")) {
-                document.querySelector('#enlace_3').innerHTML = "Mostrar contenidos";
-            } else {
-                document.querySelector('#enlace_3').innerHTML = "Ocultar contenidos";
-            }
-        }
-    })
-</script>
-
-<body>
-
-    <p id="contenidos_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci.
-        Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien
-        nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
-        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
-        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
-        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
-    <a id="enlace_1" href="#">Ocultar contenidos</a>
-
-    <br />
-
-    <p id="contenidos_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci.
-        Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien
-        nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
-        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
-        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
-        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
-    <a id="enlace_2" href="#">Ocultar contenidos</a>
-
-    <br />
-
-    <p id="contenidos_3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci.
-        Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien
-        nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
-        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
-        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
-        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
-    <a id="enlace_3" href="#">Ocultar contenidos</a>
-    <style>
-        .hide {
-            display: none;
-        }
-    </style>
-
-</body>
-
+        </style>
+    </body>
 </html>
