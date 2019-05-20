@@ -16,15 +16,16 @@ function mostrar(){
 			//al hacer JSON.parse nos devuelve un objeto JSON
 			console.log("ok");
 			//mostrar
-			document.getElementById("parrafo").innnerHTML = objeto.nombre+ " nació en "+ objeto.nacimiento+ "en "+objeto.pais;
+			document.getElementById("parrafo").innerHTML = objeto.nombre+ " nació en "+ objeto.nacimiento+ "en "+objeto.pais;
 			
 			//convertir objeto a cadena
 			var cadena = JSON.stringify(objeto);
-			document.getElementById("parrafo").innnerHTML += "El objeto "+objeto+" en modo cadena es: "+cadena; 
+			document.getElementById("parrafo").innerHTML += "El objeto "+objeto+" en modo cadena es: "+cadena; 
 		}
 	}
 	
-	xhr.open("GET","ajax_json_objeto.php",true);
+	xhr.open("GET","ejer5ajax_json_objeto.php",true);
+	xhr.send();
 }
 </script>
 </head>

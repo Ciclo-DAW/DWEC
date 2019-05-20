@@ -2,7 +2,7 @@
 //para evitar que los warning salgan en pantalla y se traten como texto json empleamos error_reporting
 error_reporting(0);
 $objeto = "";
-$objeto->nombre = "JUan";
+$objeto->nombre = "Juan";
 $objeto->nacimiento = "1990";
 $objeto->pais = "España";
 
@@ -13,4 +13,3 @@ echo $objJSON;
 
 
 ?>
-
