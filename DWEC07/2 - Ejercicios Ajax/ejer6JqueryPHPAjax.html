@@ -4,9 +4,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <script>
-            window.onload = function() {
+            $(window).on("load", function() {
                 $("#boton").click(realizarProceso);
-            };
+            });
 
             function realizarProceso() {
                 var num1 = $("#valor1").val();
