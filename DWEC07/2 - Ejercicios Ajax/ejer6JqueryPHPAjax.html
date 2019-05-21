@@ -1,29 +1,38 @@
 <html>
-<head>
-<title>Ejemplo sencillo de AJAX</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
- 
-<script>
+    <head>
+        <title>Ejemplo sencillo de AJAX</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+        <script>
+            window.onload = function() {
+                $("#boton").click(realizarProceso);
+            };
 
+            function realizarProceso() {
+                var num1 = $("#valor1").val();
+                var num2 = $("#valor2").val();
 
-function realizarProceso(){
-       
-		
-        $.ajax({
-                
-				......
-        });
-}
-</script>
-</head>
- 
-<body>
- 
-Valor 1:  <input type="text" name="caja_texto" id="valor1" value="0"> 
-Valor 2: <input type="text" name="caja_texto" id="valor2" value="0">
-<input type="button" id="boton" value="Calcula">
-<br>
-Resultado: <span id="resultado">0</span>
-</body>
+                $.ajax({
+                    url: "ejer6_suma.php",
+                    type: "POST",
+                    data: { num1: num1, num2: num2 },
+
+                    success: function(data) {
+                        $("#resultado").html(data);
+                    },
+                    error: function(data) {
+                        alert("error");
+                    }
+                });
+            }
+        </script>
+    </head>
+
+    <body>
+        Valor 1: <input type="text" name="caja_texto" id="valor1" value="0" /> Valor 2:
+        <input type="text" name="caja_texto" id="valor2" value="0" />
+        <input type="button" id="boton" value="Calcula" />
+        <br />
+        Resultado: <span id="resultado">0</span>
+    </body>
 </html>
