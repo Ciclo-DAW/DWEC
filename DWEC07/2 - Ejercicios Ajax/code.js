@@ -43,7 +43,7 @@ window.onload = function() {
             }
         };
 
-        xhr.open("GET", "compruebaDisponibilidad.php", true);
-        xhr.send();
+        xhr.open("POST", "compruebaDisponibilidad.php", true);
+        xhr.send(login);
     }
 };
